@@ -111,7 +111,7 @@ public class MyPanel extends JPanel {
         f3 = new JTextField();
         f3.setColumns(10);
         add(f3);
-        l4 = new JLabel("Quantity");
+        l4 = new JLabel("Book to delete");
         add(l4);
         f4 = new JTextField();
         f4.setColumns(10);
@@ -128,6 +128,11 @@ public class MyPanel extends JPanel {
         MyDeleteListener m3 = new MyDeleteListener();
         b3.addActionListener(m3);
         add(b3);
+        a = new JTextArea();
+        a.setColumns(20);
+        a.setRows(10);
+        a.setText("");
+        add(a);
     }
     class MyAddListener implements ActionListener{
         @Override
@@ -165,35 +170,19 @@ public class MyPanel extends JPanel {
 import java.util.*;
 public class Main {
     public static void main(String [] args){
-        Scanner sc=new Scanner(System.in);
-        Library l=new Library();
-        System.out.println("Enter n for list:");
-        int n=sc.nextInt();
-        System.out.println("Enter n Book:");
-        String name;
-        String author;
-        int year;
-        for (int i=0;i<n;i++){
-            name=sc.next();
-            author=sc.next();
-            year=sc.nextInt();
-            Book s=new Book(name,author,year);
-            l.add(s);
-        }
-        System.out.println("Enter y1,y2:");
-        int y1=sc.nextInt();
-        int y2=sc.nextInt();
-        l.deleteInRange(y1,y2);
-        l.print();
-
+       MyFrame f = new MyFrame();
     }
 
 }
 //MyFrame
 import javax.swing.*;
-
 public class MyFrame extends JFrame {
     MyFrame(){
         setSize(800, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        MyPanel p = new MyPanel();
+        add(p);
+        setVisible(true);
     }
 }
+
